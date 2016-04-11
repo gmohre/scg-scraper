@@ -1,0 +1,25 @@
+<!doctype html>
+{% macro render_card(card) %}
+
+<li>{{card.count}} - {{card.card}} ID = {{card.id}}</li>
+{% endmacro %}
+<title>Decks</title>
+<body>
+Is it my body
+<ul>
+{% for deck in decks %}
+    <li>{{deck.deckname}}</li>
+    <h3>Maindeck</h3>
+    {% for card in deck.contents.maindeck %}
+      {{ render_card(card) }}
+    {% endfor %}
+    <h3>Sideboard</h3>
+    {% for card in deck.contents.sideboard %}
+      {{ render_card(card) }}
+    {% endfor %}
+
+{% endfor %}
+</ul>
+</body>
+
+
